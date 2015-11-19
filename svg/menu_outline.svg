@@ -1,0 +1,54 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="249.47px" height="347.99px" viewBox="0 0 249.47 347.99" style="enable-background:new 0 0 249.47 347.99;"
+	 xml:space="preserve">
+    <defs>
+        <style type="text/css">
+
+	.st0{
+            fill:none;
+            stroke:#CCCCCC;
+            stroke-width:1.5;
+            stroke-miterlimit:10;
+            stroke-dasharray: 1150;
+            stroke-dashoffset: 0;
+            -webkit-animation: dash .8s linear forwards; 
+        }
+         
+        @-webkit-keyframes dash{
+            from {
+            stroke-dashoffset: 1150;
+            }
+            to {
+            stroke-dashoffset: 0;
+            }
+        }
+    
+	.st1{
+            fill:none;
+            stroke:#285A75;
+            stroke-width:2;
+            stroke-width:232;
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            -webkit-animation: linebg .45s linear forwards;
+            -webkit-animation-delay: .35s;
+        }
+            
+        @-webkit-keyframes linebg{
+            from {
+            stroke-dashoffset: 400;
+            }
+            to {
+            stroke-dashoffset: 0;
+            }
+        }
+    
+        </style>
+    </defs>
+<path class="st0" d="M27.609,4.934L20.669,22.03c-0.389,0.959-1.319,1.585-2.354,1.585H5.41c-1.4,0-2.54,1.14-2.54,2.54v314.842
+        c0,1.399,1.14,2.54,2.54,2.54h238.65c1.402,0,2.541-1.141,2.541-2.54V26.155c0-1.4-1.139-2.54-2.541-2.54H37.296
+	c-1.034,0-1.964-0.626-2.354-1.584L27.805,4.453L27.609,4.934"/>
+
+<line class="st1" x1="124.735" y1="337.671" x2="124.735" y2="29.598"/>
+</svg>
+
