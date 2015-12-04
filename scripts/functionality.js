@@ -10,6 +10,7 @@ var login_button = document.getElementById('login_button');
 var fade_out_delay;
 var shade = "closed";
 var auto_slide, move_direction;
+var info_box = document.getElementById('slider_info');
 var info_handle = document.getElementById('handle');
 
 window.onload = start_auto_slider;
@@ -23,7 +24,6 @@ menu_close.addEventListener('click', function () {
     menu_visibile = false;
     show_menu();
 }, false);
-
 //show info about the current slider image
 function info_slider_show() {
     if (shade === "closed") {
@@ -31,13 +31,15 @@ function info_slider_show() {
         document.getElementById("slider_info").style["transition"] = "min-height .2s";
         setTimeout(function () {
             document.getElementById("slider_info").style["minWidth"] = "200px";
-            document.getElementById("slider_info").style["transition"] = "min-width .15s";
+            document.getElementById("slider_info").style["letterSpacing"] = "4px";
+            document.getElementById("slider_info").style["transition"] = "min-width .15s, letter-spacing .2s";
         }, 200);
         shade = "open";
     } else {
         document.getElementById("slider_info").style["minHeight"] = "35px";
         document.getElementById("slider_info").style["minWidth"] = "150px";
-        document.getElementById("slider_info").style["transition"] = "min-height .2s, min-width .15s";
+        document.getElementById("slider_info").style["letterSpacing"] = "2px";
+        document.getElementById("slider_info").style["transition"] = "min-height .2s, min-width .15s, letter-spacing .1s";
         shade = "closed";
     }
 }
@@ -70,7 +72,6 @@ function getClickPosition(e) {
 function getPosition(element) {
     var xPosition = 0;
     var yPosition = 0;
-
     while (element) {
         xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
         yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
@@ -88,7 +89,6 @@ function show_menu() {
     } else {
         x_left = (x_left + 30) + "px";
         y_top = (y_top + 60) + "px";
-
         menu.style["top"] = y_top;
         menu.style["left"] = x_left;
         menu.style["visibility"] = "visible";
@@ -100,35 +100,33 @@ function show_menu() {
 
 var usersName = document.getElementById("user_id");
 var user;
-
 function login_process() {
     var user_id_textbox_display = window.getComputedStyle(user_id, null).getPropertyValue('display');
     if (user_id_textbox_display !== "none") {
         login_step_one();
     } else {
-        check_login("fail");  // ajax function will replace this to return dynamic login results
+        check_login("fail"); // ajax function will replace this to return dynamic login results
     }
 }
 
 function login_step_one() {
-    // do nothing if text input is empty
+// do nothing if text input is empty
     if (usersName.value.length !== 0) {
-        // store username in 'user' so that future string manipulation
-        // dosen't affect what the original user input
+// store username in 'user' so that future string manipulation
+// dosen't affect what the original user input
         user = usersName.value;
         login_step_two();
     }
 }
 
 function login_step_two() {
-    // starts to fade out the characters in the text box while at
-    // the same time deleting the username characters one by one
-    // from right to left
+// starts to fade out the characters in the text box while at
+// the same time deleting the username characters one by one
+// from right to left
 
     user_id.style["color"] = "rgba(250, 250, 250, 0)";
     user_id.style["textShadow"] = "1px 1px 1px rgba(0, 0, 0,.0)";
     user_id.style["transition"] = "color .75s, text-shadow 1s";
-
     if (user_id.value.length !== 0) {
         setTimeout(delete_last_character, 30);
     } else {
@@ -138,7 +136,6 @@ function login_step_two() {
         document.getElementById("password").style["display"] = "initial";
         var num = Math.floor((Math.random() * 4) + 1);
         var greeting;
-
         // randomize the greeting message
         if (num === 1) {
             greeting = "Hello, ";
@@ -150,7 +147,7 @@ function login_step_two() {
             greeting = "Hi, ";
         }
 
-        // temporarily display greeting inside the placeholder
+// temporarily display greeting inside the placeholder
         document.getElementById("password").placeholder = greeting + user + " ☻";
         setTimeout(password_message, 1250);
     }
@@ -200,7 +197,6 @@ function check_login(results) {
 
 var img_arr = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
 var current_image = 0;
-
 function start_auto_slider() {
     autoslide = setInterval(image_auto_slider, 4000);
 }
@@ -211,9 +207,9 @@ function pause_auto_slider() {
 }
 
 function image_auto_slider() {
-    // auto advance image slider forwards
-    //image_slider_click("next");
-    // auto advance image slider backwards
+// auto advance image slider forwards
+//image_slider_click("next");
+// auto advance image slider backwards
     image_slider_click("prev");
 }
 
@@ -259,12 +255,10 @@ function slider_image_update(curr_img) {
     document.getElementById("slider1").style["verticalAlign"] = "baseline";
     document.getElementById("slider2").style["verticalAlign"] = "baseline";
     document.getElementById("slider3").style["verticalAlign"] = "baseline";
-
     document.getElementById("slider0").innerHTML = "○";
     document.getElementById("slider1").innerHTML = "○";
     document.getElementById("slider2").innerHTML = "○";
     document.getElementById("slider3").innerHTML = "○";
-
     document.getElementById(sliderbutton).innerHTML = "•";
     document.getElementById(sliderbutton).style["color"] = "rgba(255,255,255,1)";
     document.getElementById(sliderbutton).style["textShadow"] = "0px 4px 4px rgba(0, 0, 0, .7)";
