@@ -8,15 +8,39 @@ var slider = document.getElementById('slider_box');
 var password = document.getElementById('password');
 var login_button = document.getElementById('login_button');
 var fade_out_delay;
+var shade = "closed";
 var auto_slide, move_direction;
+var info_handle = document.getElementById('handle');
 
 window.onload = start_auto_slider;
 slider.addEventListener('mouseover', pause_auto_slider, false);
 slider.addEventListener('mouseout', start_auto_slider, false);
+info_handle.addEventListener('click', info_slider_show, false);
 login_button.addEventListener('click', login_process, false);
 menu_button.addEventListener('click', getClickPosition, false);
 menu_button.addEventListener('click', show_menu, false);
-menu_close.addEventListener('click', function(){menu_visibile = false; show_menu();}, false);
+menu_close.addEventListener('click', function () {
+    menu_visibile = false;
+    show_menu();
+}, false);
+
+//show info about the current slider image
+function info_slider_show() {
+    if (shade === "closed") {
+        document.getElementById("slider_info").style["minHeight"] = "110px";
+        document.getElementById("slider_info").style["transition"] = "min-height .2s";
+        setTimeout(function () {
+            document.getElementById("slider_info").style["minWidth"] = "200px";
+            document.getElementById("slider_info").style["transition"] = "min-width .15s";
+        }, 200);
+        shade = "open";
+    } else {
+        document.getElementById("slider_info").style["minHeight"] = "35px";
+        document.getElementById("slider_info").style["minWidth"] = "150px";
+        document.getElementById("slider_info").style["transition"] = "min-height .2s, min-width .15s";
+        shade = "closed";
+    }
+}
 
 // start timer to trigger menu fade-out upon mouseout
 function start_fade_out() {
@@ -90,7 +114,7 @@ function login_step_one() {
     // do nothing if text input is empty
     if (usersName.value.length !== 0) {
         // store username in 'user' so that future string manipulation
-        // doen't affect what the user actually entered
+        // dosen't affect what the original user input
         user = usersName.value;
         login_step_two();
     }
@@ -177,20 +201,20 @@ function check_login(results) {
 var img_arr = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
 var current_image = 0;
 
-function start_auto_slider(){
+function start_auto_slider() {
     autoslide = setInterval(image_auto_slider, 4000);
 }
 
-function pause_auto_slider(){
+function pause_auto_slider() {
     window.clearInterval(autoslide);
     autoslide = null;
 }
 
-function image_auto_slider(){
+function image_auto_slider() {
     // auto advance image slider forwards
     //image_slider_click("next");
     // auto advance image slider backwards
-     image_slider_click("prev");
+    image_slider_click("prev");
 }
 
 function image_slider_click(button) {
@@ -212,7 +236,7 @@ function image_slider_click(button) {
     }
 }
 
-function slider_image_update(curr_img){
+function slider_image_update(curr_img) {
     /* todo list: make non- active button resets into for loop with a get elements by class array catch */
     current_image = curr_img;
     sliderbutton = "slider" + curr_img;
@@ -235,12 +259,12 @@ function slider_image_update(curr_img){
     document.getElementById("slider1").style["verticalAlign"] = "baseline";
     document.getElementById("slider2").style["verticalAlign"] = "baseline";
     document.getElementById("slider3").style["verticalAlign"] = "baseline";
-    
+
     document.getElementById("slider0").innerHTML = "○";
     document.getElementById("slider1").innerHTML = "○";
     document.getElementById("slider2").innerHTML = "○";
     document.getElementById("slider3").innerHTML = "○";
-    
+
     document.getElementById(sliderbutton).innerHTML = "•";
     document.getElementById(sliderbutton).style["color"] = "rgba(255,255,255,1)";
     document.getElementById(sliderbutton).style["textShadow"] = "0px 4px 4px rgba(0, 0, 0, .7)";
@@ -248,6 +272,6 @@ function slider_image_update(curr_img){
     document.getElementById(sliderbutton).style["verticalAlign"] = "super";
     document.getElementById(sliderbutton).style["transition"] = "color .5s, font-weight .25s";
     document.getElementById("slider_box").style["transition"] = "background-image .75s, background-position-x .75s";
-    document.getElementById(sliderbutton).style["transition"] = "font-weight .25s, background-position-x .25s, text-shadow .25s";  
+    document.getElementById(sliderbutton).style["transition"] = "font-weight .25s, background-position-x .25s, text-shadow .25s";
 }
 
