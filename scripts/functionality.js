@@ -30,7 +30,7 @@ function info_slider_show() {
         document.getElementById("slider_info").style["minHeight"] = "110px";
         document.getElementById("slider_info").style["transition"] = "min-height .2s";
         setTimeout(function () {
-            document.getElementById("slider_info").style["minWidth"] = "200px";
+            document.getElementById("slider_info").style["minWidth"] = "250px";
             document.getElementById("slider_info").style["letterSpacing"] = "4px";
             document.getElementById("slider_info").style["transition"] = "min-width .15s, letter-spacing .2s";
         }, 200);

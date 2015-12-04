@@ -182,16 +182,17 @@ html,body {
     margin-top: 18px;
     margin-right: 8px;
     margin-left: 16px;
+    background-color: rgba(25,25,100,0.1);
     background-image: url(../images/diagonal_line_pattern.gif);
     background-position-x: 0px;
     height: 17px;
     width: 200px;
-    transition: background-position-x .75s;
+    transition: background-position-x 3s;
 }
 
 .menu_hr:hover {
     background-position-x: 40px;
-    transition:background-position-x .75s;
+    transition:background-position-x 3s;
 }
 
 #menu {
