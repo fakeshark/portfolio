@@ -1,6 +1,16 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="249.471px" height="347.99px" viewBox="0 0 249.471 347.99" enable-background="new 0 0 249.471 347.99"
 	 xml:space="preserve">
+    <script type="text/javascript">
+        document.getElementById("menu_button_box").addEventListener('click', animate_bg);
+        
+        function animate_bg() {
+        
+        document.getElementByClass("st0").style[animation] = "dash .8s linear forwards";
+        document.getElementByClass("st2").style[animation] = "dash .8s linear forwards";
+        
+        }
+    </script>
     
         <defs>
         <style type="text/css">
@@ -12,7 +22,6 @@
             stroke-miterlimit:10;
             stroke-dasharray: 1150;
             stroke-dashoffset: 0;
-            -webkit-animation: dash .8s linear forwards; 
         }
             
         .st2{

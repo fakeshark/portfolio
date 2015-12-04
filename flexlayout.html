@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="css/flexstyle.css" rel="stylesheet" type="text/css"/>
+        <title>Brian-MacDonald.com | Template Page</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="wrapper_img">
+                <div id="header">
+                    <div class="spacer"></div>
+                    <div id="header_container">
+                        <div id="menu" class="flex1">
+                            <div id="menu_show" onmouseover="reset_fade_out()" onmouseout="start_fade_out()">
+                                <div id="menu_header">
+                                    <hr class="menu_hr">
+                                    <div id="menu_close"></div>
+                                </div>
+                                <div id="menu_search">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="logo"  class="flex3"></div>
+                        <div id="login"  class="flex1">
+                            <div id="login_container">
+                                <input type="text" id="user_id" placeholder="Welcome! What's your name?">
+                                <input type="password" id="password" placeholder="password">
+                                <input type="button" id="login_button" class="login_button" value="⃝" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spacer"></div>
+                </div>
+                <div id="main_content">
+                    <div class="spacer"></div>
+                    <section id="left_side_bar">
+                        <section id="slider_box">
+                            <div id="slider_info">Current Projects:<br /><div id="handle"> </div></div>
+                            <div id="prev_next_buttons">
+                                <div id="next" class="flex1" onclick="image_slider_click('next')"></div>
+                                <div id="slider_buttons" class="flex3">
+                                    <div id="slider3">○</div>
+                                    <div id="slider2">○</div>
+                                    <div id="slider1">○</div>
+                                    <div id="slider0">○</div>
+                                </div>
+                                <div id="prev" class="flex1" onclick="image_slider_click('prev')"></div>
+                            </div>
+                        </section>
+                    </section>
+                    <section id="main">
+                        Main
+                    </section>
+                    <section id="right_side_bar">
+                        Right
+                    </section>
+                    <div class="spacer"></div>
+                </div>
+                <div id="footer">
+                    <div id="updated"><span class="footer_text">Site last updated:
+                            <script type="text/javascript">document.write(document.lastModified);</script>
+                        </span></div>
+                    <div id="footer_middle"></div>
+                    <a id="cc_license" rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <img id="cc_license_img" alt="Creative Commons License" src="images/88x31.png" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="scripts/functionality.js"></script>
+    </body>
+</html>
