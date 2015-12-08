@@ -207,6 +207,19 @@ function login_success() {
     document.getElementById("login_button").style["backgroundColor"] = "rgb(51, 120, 51)";
     document.getElementById("login_button").style["backgroundPositionY"] = "-3px";
     document.getElementById("login_button").style["transition"] = "background-position-y 1s, background-color 1s, border-color 1s, border-top-color 1s, border-bottom-color 1s";
+    setTimeout(login_greeting, 1000);
+}
+
+function login_greeting () {
+        user_id.style["visibility"] = "hidden";
+        user_id.style["display"] = "none";
+        
+        password.style["visibility"] = "hidden";
+        password.style["display"] = "none";
+        
+        document.getElementById("login_container").style["width"] = "32px";
+        document.getElementById("login_container").style["opacity"] = "0";
+        document.getElementById("login_container").style["transition"] = "width .5s, opacity 75s";
 }
 
 function login_fail() {
@@ -223,7 +236,8 @@ function check_login(results) {
     if (results === "success") {
         document.getElementById("login_button").style["backgroundPositionY"] = "40px";
         document.getElementById("login_button").style["transition"] = "background-position-y .75s";
-        setTimeout(login_success, 1000);
+        setTimeout(login_success, 600);
+        
     } else {
         document.getElementById("login_button").style["backgroundPositionY"] = "-40px";
         document.getElementById("login_button").style["transition"] = "background-position-y .75s";
