@@ -30,8 +30,8 @@ html,body {
 #wrapper {
     background-image: url(../images/bg1.png);
     background: rgb(61,0,6); 
-    background: -webkit-linear-gradient(top, rgba(61,0,6,1) 0%, rgba(169,3,41,1) 100%); 
-    background: linear-gradient(to bottom, rgba(61,0,6,1) 0%, rgba(169,3,41,1) 100%); 
+    background: -webkit-linear-gradient(top, rgba(0,61,6,1) 0%, rgba(3,169,41,1) 100%); 
+    background: linear-gradient(to bottom, rgba(6,61,6,1) 0%, rgba(3,169,41,1) 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d0006', endColorstr='#a90329',GradientType = 0 );
     display: -webkit-box;
     display: -webkit-flex;
@@ -166,6 +166,7 @@ html,body {
     transition: opacity 0.5s;
     visibility: hidden;
     position: absolute;
+    cursor: default;
 }
 
 #menu_header {
@@ -209,6 +210,7 @@ html,body {
     border-radius: 3px;
     -webkit-transition: background-image .75s, background-color .75s, border .75s;
     transition: background-image .75s, background-color .75s, border .75s;
+    cursor: pointer;
 }
 
 #menu:hover {
@@ -238,6 +240,7 @@ html,body {
     box-shadow: 0px 2px 2px rgba(20,20,20,.8);
     -webkit-transition: background-image .5s;
     transition: background-image .5s;
+    cursor: pointer;
 }
 
 .search_button:hover {
@@ -274,6 +277,7 @@ html,body {
     box-shadow: 0px 2px 2px rgba(20,20,20,.8);
     -webkit-transition: background-image .5s;
     transition: background-image .5s;
+    cursor: pointer;
 }
 
 #menu_close:hover {
@@ -376,6 +380,7 @@ html,body {
     box-shadow: 0px 2px 2px rgba(20,20,20,.8);
     -webkit-transition: background-image .5s;
     transition: background-image .5s;
+    cursor: pointer;
 }
 
 #login_button:hover {
@@ -411,6 +416,53 @@ html,body {
     flex-grow: 2;
     width: 100%;
     border: 0px rgba(0,0,0,0);
+}
+
+#info_header {
+    
+}
+
+#info_text {
+    flex-grow:5;
+    margin-left: 15px;
+    margin-right: 10px;
+    text-align: left;
+    color: rgba(105, 190, 236, 0);
+    text-shadow: 1px 1px 0px rgba(50,50,50, 0);
+    font-family: 'Open Sans';
+    font-style: normal;
+    letter-spacing: normal;
+    font-size: 12px;
+    transition: color .25s, text-shadow .25s;
+}
+
+#info_close {
+    margin: 6px;
+    margin-left: 222px;
+    visibility: hidden;
+    display: flex;
+    height: 20px;
+    width: 20px;
+    border: 0px;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,.3);
+    transition: background-color .25s;
+}
+
+#info_close:hover {
+    background-color: rgba(255,255,255,.5);
+    transition: background-color .25s;
+}
+
+#info_close_x {
+    position: relative;
+    top: -8px;
+    left: 3px;
+    font-weight: bold;
+    font-size:25px;
+    text-shadow: 0px 0px 0px rgba(0,0,0,0);
+    color: rgba(20, 78, 109, 1);
+    cursor: pointer;
 }
 
 #left_side_bar {
@@ -466,6 +518,20 @@ html,body {
 #slide_spacer { }
 
 #slider_info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: column;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-box-pack: space-between;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
     border-radius: 0px 0px 8px 8px;
     padding-top: 2px;
     border: 0px rgba(0,0,0,0);
@@ -481,7 +547,7 @@ html,body {
     color: rgba(95, 180, 226, 1);
     text-shadow: 1px 1px 0px rgba(50,50,50,0.6);
     font-family: 'Open Sans';
-    font-style: italic;
+    font-style: normal;
     letter-spacing: 2px;
     font-size: 12px;
         -webkit-transition: min-height .75s, min-width .25s;
@@ -542,6 +608,7 @@ html,body {
     width: 63px;
     -webkit-transition: background-image .75s;
     transition: background-image .75s;
+    cursor: pointer;
 }
 
 #prev:hover {
@@ -559,6 +626,7 @@ html,body {
     width: 63px;
     -webkit-transition: background-image .75s;
     transition: background-image .75s;
+    cursor: pointer;
 }
 
 #next:hover {
@@ -577,6 +645,7 @@ html,body {
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+    cursor: pointer;
 }
 
 #slider_box {

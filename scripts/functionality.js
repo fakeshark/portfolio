@@ -7,16 +7,30 @@ var menu_close = document.getElementById('menu_close');
 var slider = document.getElementById('slider_box');
 var password = document.getElementById('password');
 var login_button = document.getElementById('login_button');
+var info_close = document.getElementById('info_close_x');
+var info_text = document.getElementById('info_text');
 var fade_out_delay;
 var shade = "closed";
 var auto_slide, move_direction;
-var info_box = document.getElementById('slider_info');
 var info_handle = document.getElementById('handle');
 
 window.onload = start_auto_slider;
+user_id.addEventListener('keydown', function (e) {
+    if (13 === e.keyCode) {
+        login_process();
+    }
+});
+password.addEventListener('keydown', function (e) {
+    if (13 === e.keyCode) {
+        check_login("fail");
+    }
+});
 slider.addEventListener('mouseover', pause_auto_slider, false);
 slider.addEventListener('mouseout', start_auto_slider, false);
-info_handle.addEventListener('click', info_slider_show, false);
+slider.addEventListener('mouseover', slider_info_mouseover, false);
+slider.addEventListener('mouseout', slider_info_mouseout, false);
+info_close.addEventListener('click', slider_info_collapse, false);
+info_handle.addEventListener('click', slider_info, false);
 login_button.addEventListener('click', login_process, false);
 menu_button.addEventListener('click', getClickPosition, false);
 menu_button.addEventListener('click', show_menu, false);
@@ -25,23 +39,45 @@ menu_close.addEventListener('click', function () {
     show_menu();
 }, false);
 //show info about the current slider image
-function info_slider_show() {
+function slider_info() {
     if (shade === "closed") {
-        document.getElementById("slider_info").style["minHeight"] = "110px";
-        document.getElementById("slider_info").style["transition"] = "min-height .2s";
-        setTimeout(function () {
-            document.getElementById("slider_info").style["minWidth"] = "250px";
-            document.getElementById("slider_info").style["letterSpacing"] = "4px";
-            document.getElementById("slider_info").style["transition"] = "min-width .15s, letter-spacing .2s";
-        }, 200);
-        shade = "open";
+        slider_info_expand();
     } else {
-        document.getElementById("slider_info").style["minHeight"] = "35px";
-        document.getElementById("slider_info").style["minWidth"] = "150px";
-        document.getElementById("slider_info").style["letterSpacing"] = "2px";
-        document.getElementById("slider_info").style["transition"] = "min-height .2s, min-width .15s, letter-spacing .1s";
-        shade = "closed";
+        slider_info_collapse();
     }
+}
+
+function slider_info_expand() {
+    shade = "open";
+    document.getElementById("slider_info").style["minHeight"] = "110px";
+    document.getElementById("slider_info").style["transition"] = "min-height .2s";
+    setTimeout(function () {
+        document.getElementById("slider_info").style["minWidth"] = "250px";
+        document.getElementById("slider_info").style["letterSpacing"] = "4px";
+        document.getElementById("slider_info").style["transition"] = "min-width .15s, letter-spacing .2s";
+        document.getElementById("slider_info").style["fontStyle"] = "italic";
+        info_text.style["visibility"] = "visible";
+        setTimeout(function () {document.getElementById('info_close').style["visibility"] = "visible";},210);
+        }, 200);
+}
+
+function slider_info_mouseover() {
+    clearTimeout(slider_info_delay);
+}
+
+function slider_info_mouseout() {
+    slider_info_delay = setTimeout(slider_info_collapse, 2500);
+}
+
+function slider_info_collapse() {
+    shade = "closed";
+    document.getElementById("slider_info").style["minHeight"] = "35px";
+    document.getElementById("slider_info").style["minWidth"] = "150px";
+    document.getElementById("slider_info").style["letterSpacing"] = "2px";
+    document.getElementById("slider_info").style["fontStyle"] = "normal";
+    document.getElementById("slider_info").style["transition"] = "min-height .2s, min-width .15s, letter-spacing .1s, font-style .1s";
+    info_text.style["visibility"] = "hidden";
+    document.getElementById('info_close').style["visibility"] = "hidden";
 }
 
 // start timer to trigger menu fade-out upon mouseout
@@ -105,7 +141,7 @@ function login_process() {
     if (user_id_textbox_display !== "none") {
         login_step_one();
     } else {
-        check_login("fail"); // ajax function will replace this to return dynamic login results
+        check_login("success"); // ajax function will replace this to return dynamic login results
     }
 }
 
@@ -194,6 +230,11 @@ function check_login(results) {
         setTimeout(login_fail, 600);
     }
 }
+var img_info_arr = [
+    "Image 1 shows some stuff... Blah, blah, blah, blah. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Image 2 shows some stuff... Blah, blah, blah, blah. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Image 3 shows some stuff... Blah, blah, blah, blah. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Image 4 shows some stuff... Blah, blah, blah, blah."];
 
 var img_arr = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
 var current_image = 0;
@@ -232,6 +273,16 @@ function image_slider_click(button) {
     }
 }
 
+function update_info_text(info) {
+    info_text.style['color'] = "rgba(105, 190, 236, 0)";
+    info_text.style['textShadow'] = "1px 1px 0px rgba(50,50,50,0)";
+    setTimeout(function(){
+        info_text.innerHTML = img_info_arr[info];
+        info_text.style['color'] = "rgba(105, 190, 236, .9)";
+        info_text.style['textShadow'] = "1px 1px 0px rgba(50,50,50,0.6)";
+        info_text.style['transition'] = "color .75s, text-shadow .75s";}, 500);
+}
+
 function slider_image_update(curr_img) {
     /* todo list: make non- active button resets into for loop with a get elements by class array catch */
     current_image = curr_img;
@@ -239,6 +290,7 @@ function slider_image_update(curr_img) {
     document.getElementById("slider_box").style["backgroundPositionX"] = move_direction;
     document.getElementById("slider_box").style["transition"] = "background-position-x .75s";
     document.getElementById("slider_box").style["backgroundImage"] = "url(images/image" + current_image + ".jpg)";
+    update_info_text(current_image);
     document.getElementById("slider0").style["color"] = "rgba(250, 250, 250, 0.8)";
     document.getElementById("slider1").style["color"] = "rgba(250, 250, 250, 0.8)";
     document.getElementById("slider2").style["color"] = "rgba(250, 250, 250, 0.8)";
