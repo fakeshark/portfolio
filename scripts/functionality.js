@@ -7,7 +7,7 @@ var menu_close = document.getElementById('menu_close');
 var slider = document.getElementById('slider_box');
 var password = document.getElementById('password');
 var login_button = document.getElementById('login_button');
-var info_close = document.getElementById('info_close_x');
+var info_close = document.getElementById('info_close');
 var info_text = document.getElementById('info_text');
 var fade_out_delay;
 var shade = "closed";
@@ -15,6 +15,7 @@ var auto_slide, move_direction;
 var info_handle = document.getElementById('handle');
 
 window.onload = start_auto_slider;
+
 user_id.addEventListener('keydown', function (e) {
     if (13 === e.keyCode) {
         login_process();
