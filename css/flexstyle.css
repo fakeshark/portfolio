@@ -459,15 +459,33 @@ html,body {
 #contact_button {
     height: 30px;
     width: 30px;
+    margin: 15px;
+    margin-left: 12px;
     background-image: url(../svg/arrow_right.svg);
     background-repeat: no-repeat;
     background-position: center;
-    transition: background-image .25s;
+    transition: background-image .75s, margin-left .25s, margin-right .25s;
 }
 
 #contact_button:hover {
     background-image: url(../svg/arrow_right_hover.svg);
-    transition: background-image .25s;
+    margin-left: 17px;
+    margin-right: 10px;
+    transition: background-image .25s, margin-left .5s, margin-right .5s;
+}
+
+#contact_message {
+    display: flex;
+    flex-flow: row;
+    align-content: space-between;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+#contact_me {
+    text-align: center;
+    margin: auto;
+    margin-left: 0px;
 }
 
 #info_close:hover {
