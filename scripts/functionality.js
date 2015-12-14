@@ -14,6 +14,8 @@ var shade = "closed";
 var auto_slide, move_direction;
 var info_handle = document.getElementById('handle');
 
+document.getElementById("contact_button").addEventListener('click', contact_expand, false);
+
 window.onload = start_auto_slider;
 
 user_id.addEventListener('keydown', function (e) {
@@ -60,6 +62,23 @@ function slider_info_expand() {
         info_text.style["visibility"] = "visible";
         setTimeout(function () {document.getElementById('info_close').style["visibility"] = "visible";},210);
         }, 200);
+}
+
+function contact_expand () {
+    document.getElementById("contact_form").style["visibility"] = "visible";
+    document.getElementById("contact_form").style["width"] = "250px";
+    document.getElementById("contact_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
+    document.getElementById("contact_form").style["border-top"] = "1px solid rgba(255,185,50,1)";
+    document.getElementById("contact_form").style["transition"] = "width .5s, border .5s, box-shadow .75s";
+    setTimeout(function () {
+    document.getElementById("contact_form").style["height"] = "200px";
+    document.getElementById("contact_form").style["borderRadius"] = "6px";
+    document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
+    document.getElementById("contact_form").style["border"] = "1px solid rgba(255,185,50,1)";
+    document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
+    document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-radius .25s";
+    },550);
+    
 }
 
 function slider_info_mouseover() {
