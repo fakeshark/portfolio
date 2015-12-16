@@ -9,6 +9,10 @@ var password = document.getElementById('password');
 var login_button = document.getElementById('login_button');
 var info_close = document.getElementById('info_close');
 var info_text = document.getElementById('info_text');
+var slider0 = document.getElementById('slider0');
+var slider1 = document.getElementById('slider1');
+var slider2 = document.getElementById('slider2');
+var slider3 = document.getElementById('slider3');
 var fade_out_delay;
 var shade = "closed";
 var auto_slide, move_direction;
@@ -16,7 +20,7 @@ var info_handle = document.getElementById('handle');
 
 document.getElementById("contact_button").addEventListener('click', contact_expand, false);
 
-window.onload = start_auto_slider;
+window.onload = start_auto_slider, slider_image_update(3);
 
 user_id.addEventListener('keydown', function (e) {
     if (13 === e.keyCode) {
@@ -32,6 +36,10 @@ slider.addEventListener('mouseover', pause_auto_slider, false);
 slider.addEventListener('mouseout', start_auto_slider, false);
 slider.addEventListener('mouseover', slider_info_mouseover, false);
 slider.addEventListener('mouseout', slider_info_mouseout, false);
+slider0.addEventListener('click', function () {slider_image_update(0);}, false);
+slider1.addEventListener('click', function () {slider_image_update(1);}, false);
+slider2.addEventListener('click', function () {slider_image_update(2);}, false);
+slider3.addEventListener('click', function () {slider_image_update(3);}, false);
 info_close.addEventListener('click', slider_info_collapse, false);
 info_handle.addEventListener('click', slider_info, false);
 login_button.addEventListener('click', login_process, false);
@@ -41,6 +49,7 @@ menu_close.addEventListener('click', function () {
     menu_visibile = false;
     show_menu();
 }, false);
+
 //show info about the current slider image
 function slider_info() {
     if (shade === "closed") {
@@ -66,7 +75,7 @@ function slider_info_expand() {
 
 function contact_expand () {
     document.getElementById("contact_form").style["visibility"] = "visible";
-    document.getElementById("contact_form").style["width"] = "250px";
+    document.getElementById("contact_form").style["width"] = "270px";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
     document.getElementById("contact_form").style["border-top"] = "1px solid rgba(255,185,50,1)";
     document.getElementById("contact_form").style["transition"] = "width .5s, border .5s, box-shadow .75s";
@@ -75,8 +84,10 @@ function contact_expand () {
     document.getElementById("contact_form").style["borderRadius"] = "6px";
     document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
     document.getElementById("contact_form").style["border"] = "1px solid rgba(255,185,50,1)";
+    document.getElementById("contact_form").style["borderBottom"] = "1px solid rgba(255,205,100,1)";
+    document.getElementById("contact_form").style["borderTop"] = "1px solid rgba(215,145,10,1)";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
-    document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-radius .25s";
+    document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
     },550);
     
 }
@@ -273,7 +284,7 @@ var img_info_arr = [
 var img_arr = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
 var current_image = 0;
 function start_auto_slider() {
-    autoslide = setInterval(image_auto_slider, 4000);
+    autoslide = setInterval(image_auto_slider, 3500);
 }
 
 function pause_auto_slider() {
@@ -282,27 +293,22 @@ function pause_auto_slider() {
 }
 
 function image_auto_slider() {
-// auto advance image slider forwards
+// auto advance image slider forwards (right to left)
 //image_slider_click("next");
-// auto advance image slider backwards
+// auto advance image slider backwards (left to right)
     image_slider_click("prev");
 }
 
 function image_slider_click(button) {
     if ((current_image === (img_arr.length - 1)) && (button === "next")) {
-        move_direction = "5px";
         slider_image_update(0);
     } else if ((current_image === 0) && (button === "prev")) {
-        move_direction = "-5px";
         slider_image_update(img_arr.length - 1);
     } else if (button === "next") {
-        move_direction = "5px";
         slider_image_update((current_image + 1));
     } else if (button === "prev") {
-        move_direction = "-5px";
         slider_image_update((current_image - 1));
     } else {
-        move_direction = "0px";
         slider_image_update(button);
     }
 }
@@ -321,7 +327,6 @@ function slider_image_update(curr_img) {
     /* todo list: make non- active button resets into for loop with a get elements by class array catch */
     current_image = curr_img;
     sliderbutton = "slider" + curr_img;
-    document.getElementById("slider_box").style["backgroundPositionX"] = move_direction;
     document.getElementById("slider_box").style["transition"] = "background-position-x .75s";
     document.getElementById("slider_box").style["backgroundImage"] = "url(images/image" + current_image + ".jpg)";
     update_info_text(current_image);

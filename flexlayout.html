@@ -46,7 +46,6 @@
                             <div id="prev_next_buttons">
                                 <div id="next" class="flex1" onclick="image_slider_click('next')"></div>
                                 <div id="slider_buttons" class="flex3">
-                               <!-- make these actually work as buttons  -->
                                     <div id="slider3">○</div>
                                     <div id="slider2">○</div>
                                     <div id="slider1">○</div>
@@ -55,14 +54,20 @@
                                 <div id="prev" class="flex1" onclick="image_slider_click('prev')"></div>
                             </div>
                         </section>
-                        <section id="lower_sidebar" >
-                            <div id="contact_message">
+                        <section id="lower_sidebar" class="sidebar_text" >
+                            <div id="contact_message" class="side_selection">
                                 <div id="contact_button" ></div>
-                                <label id="contact_me">Contact Me</label>
+                                <label class="side_bar_label">Contact Me</label>
                             </div>
                             <section id="contact_form"></section>
-                            <div id="social_media">Follow Me</div>
-                            <div id="about">About Me</div>
+                            <div id="social_media"  class="side_selection">
+                                <div id="contact_button"></div>
+                                <label class="side_bar_label">Follow Me</label>
+                            </div>
+                            <div id="about_me" class="side_selection">
+                                <div id="contact_button"></div>
+                                <label class="side_bar_label">About Me</label>
+                            </div>
                         </section>
                     </section>
                     <section id="main">
@@ -84,6 +89,6 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="scripts/functionality.js"></script>
+        <script type="text/javascript" src="scripts/ui.js"></script>
     </body>
 </html>

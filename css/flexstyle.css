@@ -456,15 +456,30 @@ html,body {
     cursor: pointer;
 }
 
+.side_selection {
+    background-color: rgba(255,255,0,0);
+    transition: background-color .25s;
+}
+
+.side_selection:hover {
+    background-color: rgba(255,255,0,0.1);
+    transition: background-color .45s;
+}
+
 #contact_button {
     height: 30px;
     width: 30px;
-    margin: 15px;
-    margin-left: 12px;
+    margin: 10px;
+    margin-left: 10px;
     background-image: url(../svg/plus_box.svg);
     background-repeat: no-repeat;
     background-position: center;
     transition: background-image .75s;
+}
+
+#contact_button:hover {
+    background-image: url(../svg/plus_box_hover.svg);
+    transition: background-image .25s;
 }
 
 #contact_form {
@@ -475,23 +490,42 @@ html,body {
     box-shadow: 0px 10px 15px rgba(245,140,35,.2), inset 0px 0px 10px rgba(50,50,50,.0);
 }
 
-#contact_button:hover {
-    background-image: url(../svg/plus_box_hover.svg);
-    transition: background-image .25s;
-}
-
 #contact_message {
     display: flex;
     flex-flow: row;
     align-content: space-between;
     justify-content: flex-start;
     width: 100%;
+    margin-bottom: -10px;
+    margin-top: -3px;
 }
 
-#contact_me {
-    text-align: center;
+.side_bar_label {
+    text-align: left;
+    width: 100%;
+    height: 100%;
     margin: auto;
     margin-left: 0px;
+    margin-right: 20px;
+    border: 0px;
+}
+
+#social_media {
+    display: flex;
+    flex-flow: row;
+    align-content: space-between;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+#about_me {
+    display: flex;
+    flex-flow: row;
+    align-content: space-between;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: -10px;
 }
 
 #info_close:hover {
@@ -731,7 +765,8 @@ html,body {
     -ms-flex-align: center;
     align-items: center;
     margin-top: 10px;
-    border: 1px solid rgba(255,185,50,1);
+    border: 1px solid rgba(245,175,40,1);
+    border-top: 1px solid rgba(255,205,100,1);
     border-bottom: 0px rgba(0,0,0,0);
     border-radius: 6px 6px 0px 0px;
     box-shadow: 0px 5px 8px rgba(0,0,0,.8), inset 0px 10px 60px rgba(245,140,35,.8);
@@ -779,6 +814,14 @@ html,body {
     background-color: rgba( 40, 90, 117, 1 );
     box-shadow: inset 0px 0px 15px rgba(59,131,153,.5), 0px -2px 10px rgba(20, 20, 20, .6);
     height: 40px;
+}
+
+.sidebar_text {
+    color: rgba(255,255,255,0.8);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+    font-family: 'Open Sans';
+    letter-spacing: 3px;
+    font-size: 12px;   
 }
 
 .footer_text {
