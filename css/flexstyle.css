@@ -466,18 +466,35 @@ html,body {
     transition: background-color .45s;
 }
 
-#contact_button {
+.side_bar_button_close {
     height: 30px;
     width: 30px;
     margin: 10px;
     margin-left: 10px;
-    background-image: url(../svg/plus_box.svg);
     background-repeat: no-repeat;
     background-position: center;
-    transition: background-image .75s;
+    background-image: url(../svg/minus_box.svg);
+    transition: background-image .25s;
 }
 
-#contact_button:hover {
+.side_bar_button_close:hover {
+    background-image: url(../svg/minus_box_hover.svg);
+    transition: background-image .25s;
+}
+
+
+.side_bar_button_open {
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+    margin-left: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../svg/plus_box.svg);
+    transition: background-image .25s;
+}
+
+.side_bar_button_open:hover {
     background-image: url(../svg/plus_box_hover.svg);
     transition: background-image .25s;
 }
@@ -745,7 +762,7 @@ html,body {
     min-height: 197px;
 }
 
-#lower_sidebar{
+#lower_sidebar {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

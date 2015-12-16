@@ -13,12 +13,18 @@ var slider0 = document.getElementById('slider0');
 var slider1 = document.getElementById('slider1');
 var slider2 = document.getElementById('slider2');
 var slider3 = document.getElementById('slider3');
+var slider_info_delay;
+var contact_state = "open";
+var social_state = "open";
+var about_state = "open";
 var fade_out_delay;
 var shade = "closed";
 var auto_slide, move_direction;
 var info_handle = document.getElementById('handle');
 
 document.getElementById("contact_button").addEventListener('click', contact_expand, false);
+document.getElementById("social_button").addEventListener('click', social_expand, false);
+document.getElementById("about_button").addEventListener('click', about_expand, false);
 
 window.onload = start_auto_slider, slider_image_update(3);
 
@@ -32,6 +38,7 @@ password.addEventListener('keydown', function (e) {
         check_login("fail");
     }
 });
+
 slider.addEventListener('mouseover', pause_auto_slider, false);
 slider.addEventListener('mouseout', start_auto_slider, false);
 slider.addEventListener('mouseover', slider_info_mouseover, false);
@@ -72,8 +79,40 @@ function slider_info_expand() {
         setTimeout(function () {document.getElementById('info_close').style["visibility"] = "visible";},210);
         }, 200);
 }
-
+// swap out a class instead of changing specific attributes directly
 function contact_expand () {
+    if (contact_state === "close") {
+        document.getElementById("contact_button").className = 'side_bar_button_open';
+        contact_state = "open";
+       contact_form_contract();
+    } else {
+        document.getElementById("contact_button").className = 'side_bar_button_close';
+        contact_state = "close";
+        contact_form_expand();
+    }
+}
+
+function social_expand () {
+    if (social_state === "close") {
+        document.getElementById("social_button").className = 'side_bar_button_open';
+        social_state = "open";
+    } else {
+        document.getElementById("social_button").className = 'side_bar_button_close';
+        social_state = "close";
+    }
+}
+
+function about_expand () {
+    if (about_state === "close") {
+        document.getElementById("about_button").className = 'side_bar_button_open';
+        about_state = "open";
+    } else {
+        document.getElementById("about_button").className = 'side_bar_button_close';
+        about_state = "close";
+    }
+}
+
+function contact_form_expand () {
     document.getElementById("contact_form").style["visibility"] = "visible";
     document.getElementById("contact_form").style["width"] = "270px";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
@@ -89,7 +128,18 @@ function contact_expand () {
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
     document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
     },550);
-    
+}
+
+function contact_form_contract () {
+    document.getElementById("contact_form").style["width"] = "1px";
+    document.getElementById("contact_form").style["height"] = "1px";
+    document.getElementById("contact_form").style["transition"] = "height .5s, width .5s";
+    setTimeout(function () {
+    document.getElementById("contact_form").style["border"] = "1px solid rgba(255,185,50,0)";
+    document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.0)";
+    document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.0), inset 1px 5px 35px rgba(45,20,0,.0)";
+    document.getElementById("contact_form").style["visibility"] = "hidden";
+    },500);
 }
 
 function slider_info_mouseover() {
