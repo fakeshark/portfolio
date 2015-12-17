@@ -83,10 +83,14 @@ function slider_info_expand() {
 function contact_expand () {
     if (contact_state === "close") {
         document.getElementById("contact_button").className = 'side_bar_button_open';
+        document.getElementById("social_button").className = 'side_bar_button_open';
+        document.getElementById("about_button").className = 'side_bar_button_open';
         contact_state = "open";
-       contact_form_contract();
+        contact_form_contract();
     } else {
         document.getElementById("contact_button").className = 'side_bar_button_close';
+        document.getElementById("social_button").className = 'side_bar_button_open';
+        document.getElementById("about_button").className = 'side_bar_button_open';
         contact_state = "close";
         contact_form_expand();
     }
@@ -95,10 +99,16 @@ function contact_expand () {
 function social_expand () {
     if (social_state === "close") {
         document.getElementById("social_button").className = 'side_bar_button_open';
+        document.getElementById("about_button").className = 'side_bar_button_open';
+        document.getElementById("contact_button").className = 'side_bar_button_open';
         social_state = "open";
     } else {
         document.getElementById("social_button").className = 'side_bar_button_close';
+        document.getElementById("about_button").className = 'side_bar_button_open';
+        document.getElementById("contact_button").className = 'side_bar_button_open';
         social_state = "close";
+        contact_state = "open";
+        contact_form_contract();
     }
 }
 
@@ -116,15 +126,15 @@ function contact_form_expand () {
     document.getElementById("contact_form").style["visibility"] = "visible";
     document.getElementById("contact_form").style["width"] = "270px";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
-    document.getElementById("contact_form").style["border-top"] = "1px solid rgba(255,185,50,1)";
-    document.getElementById("contact_form").style["transition"] = "width .5s, border .5s, box-shadow .75s";
+    document.getElementById("contact_form").style["border-bottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("contact_form").style["transition"] = "width .5s, border-bottom .5s, box-shadow .75s";
     setTimeout(function () {
     document.getElementById("contact_form").style["height"] = "200px";
     document.getElementById("contact_form").style["borderRadius"] = "6px";
     document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
-    document.getElementById("contact_form").style["border"] = "1px solid rgba(255,185,50,1)";
-    document.getElementById("contact_form").style["borderBottom"] = "1px solid rgba(255,205,100,1)";
-    document.getElementById("contact_form").style["borderTop"] = "1px solid rgba(215,145,10,1)";
+    document.getElementById("contact_form").style["border"] = "2px solid rgba(157,67,5,1)";
+    document.getElementById("contact_form").style["borderBottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("contact_form").style["borderTop"] = "2px solid rgba(111,47,2,1)";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
     document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
     },550);
@@ -135,7 +145,7 @@ function contact_form_contract () {
     document.getElementById("contact_form").style["height"] = "1px";
     document.getElementById("contact_form").style["transition"] = "height .5s, width .5s";
     setTimeout(function () {
-    document.getElementById("contact_form").style["border"] = "1px solid rgba(255,185,50,0)";
+    document.getElementById("contact_form").style["border"] = "2px solid rgba(253,128,36,0)";
     document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.0)";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.0), inset 1px 5px 35px rgba(45,20,0,.0)";
     document.getElementById("contact_form").style["visibility"] = "hidden";
