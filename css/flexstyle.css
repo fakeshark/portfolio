@@ -466,7 +466,7 @@ html,body {
     transition: background-color .45s;
 }
 
-.side_bar_button_close {
+.side_bar_button_minus {
     height: 30px;
     width: 30px;
     margin: 10px;
@@ -477,13 +477,13 @@ html,body {
     transition: background-image .25s;
 }
 
-.side_bar_button_close:hover {
+.side_bar_button_minus:hover {
     background-image: url(../svg/minus_box_hover.svg);
     transition: background-image .25s;
 }
 
 
-.side_bar_button_open {
+.side_bar_button_plus {
     height: 30px;
     width: 30px;
     margin: 10px;
@@ -494,12 +494,30 @@ html,body {
     transition: background-image .25s;
 }
 
-.side_bar_button_open:hover {
+.side_bar_button_plus:hover {
     background-image: url(../svg/plus_box_hover.svg);
     transition: background-image .25s;
 }
 
 #contact_form {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    border: 0px;
+    border-bottom: 2px solid rgba(253,128,36,1);
+    box-shadow: 0px 10px 15px rgba(245,140,35,.2), inset 0px 0px 10px rgba(50,50,50,.0);
+}
+
+#social_form {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    border: 0px;
+    border-bottom: 2px solid rgba(253,128,36,1);
+    box-shadow: 0px 10px 15px rgba(245,140,35,.2), inset 0px 0px 10px rgba(50,50,50,.0);
+}
+
+#about_form {
     visibility: hidden;
     width: 1px;
     height: 1px;

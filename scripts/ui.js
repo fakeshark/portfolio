@@ -14,9 +14,9 @@ var slider1 = document.getElementById('slider1');
 var slider2 = document.getElementById('slider2');
 var slider3 = document.getElementById('slider3');
 var slider_info_delay;
-var contact_state = "open";
-var social_state = "open";
-var about_state = "open";
+var contact_state = "closed";
+var social_state = "closed";
+var about_state = "closed";
 var fade_out_delay;
 var shade = "closed";
 var auto_slide, move_direction;
@@ -79,46 +79,46 @@ function slider_info_expand() {
         setTimeout(function () {document.getElementById('info_close').style["visibility"] = "visible";},210);
         }, 200);
 }
-// swap out a class instead of changing specific attributes directly
+
 function contact_expand () {
-    if (contact_state === "close") {
-        document.getElementById("contact_button").className = 'side_bar_button_open';
-        document.getElementById("social_button").className = 'side_bar_button_open';
-        document.getElementById("about_button").className = 'side_bar_button_open';
-        contact_state = "open";
-        contact_form_contract();
-    } else {
-        document.getElementById("contact_button").className = 'side_bar_button_close';
-        document.getElementById("social_button").className = 'side_bar_button_open';
-        document.getElementById("about_button").className = 'side_bar_button_open';
-        contact_state = "close";
+    if (contact_state === "closed") {
+        document.getElementById("contact_button").className = 'side_bar_button_minus';
+        document.getElementById("social_button").className = 'side_bar_button_plus';
+        document.getElementById("about_button").className = 'side_bar_button_plus';
         contact_form_expand();
+        social_form_contract();
+        about_form_contract();
+    } else {
+        document.getElementById("contact_button").className = 'side_bar_button_plus';
+        contact_form_contract();
     }
 }
 
 function social_expand () {
-    if (social_state === "close") {
-        document.getElementById("social_button").className = 'side_bar_button_open';
-        document.getElementById("about_button").className = 'side_bar_button_open';
-        document.getElementById("contact_button").className = 'side_bar_button_open';
-        social_state = "open";
-    } else {
-        document.getElementById("social_button").className = 'side_bar_button_close';
-        document.getElementById("about_button").className = 'side_bar_button_open';
-        document.getElementById("contact_button").className = 'side_bar_button_open';
-        social_state = "close";
-        contact_state = "open";
+    if (social_state === "closed") {
+        document.getElementById("contact_button").className = 'side_bar_button_plus';
+        document.getElementById("social_button").className = 'side_bar_button_minus';
+        document.getElementById("about_button").className = 'side_bar_button_plus';
         contact_form_contract();
+        social_form_expand();
+        about_form_contract();
+    } else {
+        document.getElementById("social_button").className = 'side_bar_button_plus';
+        social_form_contract();
     }
 }
 
 function about_expand () {
-    if (about_state === "close") {
-        document.getElementById("about_button").className = 'side_bar_button_open';
-        about_state = "open";
+    if (about_state === "closed") {
+        document.getElementById("contact_button").className = 'side_bar_button_plus';
+        document.getElementById("social_button").className = 'side_bar_button_plus';
+        document.getElementById("about_button").className = 'side_bar_button_minus';
+        contact_form_contract();
+        social_form_contract();
+        about_form_expand();
     } else {
-        document.getElementById("about_button").className = 'side_bar_button_close';
-        about_state = "close";
+        document.getElementById("about_button").className = 'side_bar_button_plus';
+        about_form_contract();
     }
 }
 
@@ -138,6 +138,7 @@ function contact_form_expand () {
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
     document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
     },550);
+    contact_state = "opened";
 }
 
 function contact_form_contract () {
@@ -150,6 +151,71 @@ function contact_form_contract () {
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.0), inset 1px 5px 35px rgba(45,20,0,.0)";
     document.getElementById("contact_form").style["visibility"] = "hidden";
     },500);
+    contact_state = "closed";
+}
+
+function social_form_expand () {
+    document.getElementById("social_form").style["visibility"] = "visible";
+    document.getElementById("social_form").style["width"] = "270px";
+    document.getElementById("social_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
+    document.getElementById("social_form").style["border-bottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("social_form").style["transition"] = "width .5s, border-bottom .5s, box-shadow .75s";
+    setTimeout(function () {
+    document.getElementById("social_form").style["height"] = "200px";
+    document.getElementById("social_form").style["borderRadius"] = "6px";
+    document.getElementById("social_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
+    document.getElementById("social_form").style["border"] = "2px solid rgba(157,67,5,1)";
+    document.getElementById("social_form").style["borderBottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("social_form").style["borderTop"] = "2px solid rgba(111,47,2,1)";
+    document.getElementById("social_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
+    document.getElementById("social_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
+    },550);
+    social_state = "opened";
+}
+
+function social_form_contract () {
+    document.getElementById("social_form").style["width"] = "1px";
+    document.getElementById("social_form").style["height"] = "1px";
+    document.getElementById("social_form").style["transition"] = "height .5s, width .5s";
+    setTimeout(function () {
+    document.getElementById("social_form").style["border"] = "2px solid rgba(253,128,36,0)";
+    document.getElementById("social_form").style["backgroundColor"] = "rgba(45,30,10,.0)";
+    document.getElementById("social_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.0), inset 1px 5px 35px rgba(45,20,0,.0)";
+    document.getElementById("social_form").style["visibility"] = "hidden";
+    },500);    
+    social_state = "closed";
+}
+
+function about_form_expand () {
+    document.getElementById("about_form").style["visibility"] = "visible";
+    document.getElementById("about_form").style["width"] = "270px";
+    document.getElementById("about_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
+    document.getElementById("about_form").style["border-bottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("about_form").style["transition"] = "width .5s, border-bottom .5s, box-shadow .75s";
+    setTimeout(function () {
+    document.getElementById("about_form").style["height"] = "200px";
+    document.getElementById("about_form").style["borderRadius"] = "6px";
+    document.getElementById("about_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
+    document.getElementById("about_form").style["border"] = "2px solid rgba(157,67,5,1)";
+    document.getElementById("about_form").style["borderBottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("about_form").style["borderTop"] = "2px solid rgba(111,47,2,1)";
+    document.getElementById("about_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
+    document.getElementById("about_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
+    },550);
+    about_state = "opened";
+}
+
+function about_form_contract () {
+    document.getElementById("about_form").style["width"] = "1px";
+    document.getElementById("about_form").style["height"] = "1px";
+    document.getElementById("about_form").style["transition"] = "height .5s, width .5s";
+    setTimeout(function () {
+    document.getElementById("about_form").style["border"] = "2px solid rgba(253,128,36,0)";
+    document.getElementById("about_form").style["backgroundColor"] = "rgba(45,30,10,.0)";
+    document.getElementById("about_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.0), inset 1px 5px 35px rgba(45,20,0,.0)";
+    document.getElementById("about_form").style["visibility"] = "hidden";
+    },500);  
+    about_state = "closed";
 }
 
 function slider_info_mouseover() {
