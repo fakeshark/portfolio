@@ -161,7 +161,7 @@ function social_form_expand () {
     document.getElementById("social_form").style["border-bottom"] = "2px solid rgba(253,128,36,1)";
     document.getElementById("social_form").style["transition"] = "width .5s, border-bottom .5s, box-shadow .75s";
     setTimeout(function () {
-    document.getElementById("social_form").style["height"] = "200px";
+    document.getElementById("social_form").style["height"] = "80px";
     document.getElementById("social_form").style["borderRadius"] = "6px";
     document.getElementById("social_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
     document.getElementById("social_form").style["border"] = "2px solid rgba(157,67,5,1)";
