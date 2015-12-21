@@ -510,7 +510,14 @@ html,body {
 
 #social_form {
     visibility: hidden;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
     width: 1px;
+    max-width: 270px;
+    padding: 5px;
     height: 1px;
     border: 0px;
     border-bottom: 2px solid rgba(253,128,36,1);
@@ -750,6 +757,106 @@ html,body {
     -ms-flex-pack: distribute;
     justify-content: space-around;
     cursor: pointer;
+}
+
+.social_media_buttons {
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(230,230,230,1);
+    border-radius: 6px;
+    box-shadow: inset 0px 0px 10px rgba(255,255,255,.3), 0px 2px 6px rgba(0,0,0,.6);
+    margin: 4px;
+}
+
+.social_media_buttons:hover {
+    box-shadow: inset 0px 0px 10px rgba(80,80,80,.3), 0px 2px 12px rgba(0,0,0,.8);
+}
+
+.social_media_filler {
+    visibility: hidden;
+    width: 50px;
+    height: 50px;
+    border: 2px dashed rgba(230,230,230,.2);
+    border-radius: 6px;
+    margin: 4px;
+}
+
+#github {
+    visibility: hidden;
+    background-image: url(../svg/github.svg);
+    background-color: rgba(66,66,99,1);
+    background-position: center;
+    transition: background-image 1s;
+}
+
+#github:hover {
+    background-image: url(../svg/github_hover.svg);
+    transition: background-image .25s;
+}
+
+#twitter {
+    visibility: hidden;
+    background-image: url(../svg/twitter.svg);
+    background-color: rgba(0,170,240,1);
+    background-position: center;
+    transition: background-image 1s;
+}
+
+#twitter:hover {
+    background-image: url(../svg/twitter_hover.svg);
+    transition: background-image .25s;
+}
+
+#linkedin {
+    visibility: hidden;
+    background-image: url(../svg/linkedin.svg);
+    background-color: rgba(0,122,183,1);
+    background-position: center;
+    transition: background-image 1s;
+}
+
+#linkedin:hover {
+    background-image: url(../svg/linkedin_hover.svg);
+    transition: background-image .25s;
+}
+
+#vimeo {
+    visibility: hidden;
+    background-image: url(../svg/vimeo.svg);
+    background-color: rgba(0,122,183,1);
+    background-position: center;
+    transition: background-image 1s;
+}
+
+#vimeo:hover {
+    background-image: url(../svg/vimeo_hover.svg);
+    transition: background-image .25s;
+}
+
+#facebook {
+    visibility: hidden;
+    background-image: url(../svg/facebook.svg);
+    background-color: rgba(0,122,183,1);
+    background-position: center;
+    transition: background-image 1s;
+}
+
+#facebook:hover {
+    background-image: url(../svg/facebook_hover.svg);
+    transition: background-image .25s;
+}
+
+#dribble {
+    visibility: hidden;
+    background-image: url(../svg/dribble.svg);
+    background-color: rgba(235,75,135,1);
+    background-position: center;
+    transition: background-image 1s;
+}
+
+#dribble:hover {
+    background-image: url(../svg/dribble_hover.svg);
+    transition: background-image .25s;
 }
 
 #slider_box {

@@ -75,6 +75,7 @@ function slider_info_expand() {
         document.getElementById("slider_info").style["letterSpacing"] = "4px";
         document.getElementById("slider_info").style["transition"] = "min-width .15s, letter-spacing .2s";
         document.getElementById("slider_info").style["fontStyle"] = "italic";
+        document.getElementById("slider_info").style["color"] = "rgba(130, 215, 250, 1)";
         info_text.style["visibility"] = "visible";
         setTimeout(function () {document.getElementById('info_close').style["visibility"] = "visible";},210);
         }, 200);
@@ -141,6 +142,30 @@ function contact_form_expand () {
     contact_state = "opened";
 }
 
+function populate_social_media_buttons(state) {
+    timeAmt = 250;
+    if (state === "visible") {
+    setTimeout(function () { document.getElementById("github").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("twitter").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("linkedin").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("vimeo").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("facebook").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("dribble").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("filler1").style["visibility"] = state; },(timeAmt += 100)); 
+    setTimeout(function () { document.getElementById("filler2").style["visibility"] = state; },(timeAmt += 100));
+    } else {
+    setTimeout(function () { document.getElementById("github").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("twitter").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("linkedin").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("vimeo").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("facebook").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("dribble").style["visibility"] = state; },(timeAmt -= 50));    
+    setTimeout(function () { document.getElementById("filler1").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("filler2").style["visibility"] = state; },(timeAmt -= 50));
+    }
+
+}
+
 function contact_form_contract () {
     document.getElementById("contact_form").style["width"] = "1px";
     document.getElementById("contact_form").style["height"] = "1px";
@@ -156,12 +181,13 @@ function contact_form_contract () {
 
 function social_form_expand () {
     document.getElementById("social_form").style["visibility"] = "visible";
-    document.getElementById("social_form").style["width"] = "270px";
+    document.getElementById("social_form").style["width"] = "260px";
     document.getElementById("social_form").style["boxShadow"] = "0px 0px 15px rgba(245,140,35,.2), inset 3px 5px 15px rgba(45,20,0,.0)";
     document.getElementById("social_form").style["border-bottom"] = "2px solid rgba(253,128,36,1)";
+    document.getElementById("social_form").style["padding"] = "5px";
     document.getElementById("social_form").style["transition"] = "width .5s, border-bottom .5s, box-shadow .75s";
     setTimeout(function () {
-    document.getElementById("social_form").style["height"] = "80px";
+    document.getElementById("social_form").style["height"] = "130px";
     document.getElementById("social_form").style["borderRadius"] = "6px";
     document.getElementById("social_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
     document.getElementById("social_form").style["border"] = "2px solid rgba(157,67,5,1)";
@@ -170,19 +196,24 @@ function social_form_expand () {
     document.getElementById("social_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
     document.getElementById("social_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
     },550);
+    setTimeout(function () { populate_social_media_buttons("visible"); },475);
     social_state = "opened";
 }
 
 function social_form_contract () {
+    populate_social_media_buttons("hidden");
+    setTimeout(function () {
     document.getElementById("social_form").style["width"] = "1px";
     document.getElementById("social_form").style["height"] = "1px";
+    document.getElementById("social_form").style["padding"] = "0px";
     document.getElementById("social_form").style["transition"] = "height .5s, width .5s";
+    },300);
     setTimeout(function () {
     document.getElementById("social_form").style["border"] = "2px solid rgba(253,128,36,0)";
     document.getElementById("social_form").style["backgroundColor"] = "rgba(45,30,10,.0)";
     document.getElementById("social_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.0), inset 1px 5px 35px rgba(45,20,0,.0)";
     document.getElementById("social_form").style["visibility"] = "hidden";
-    },500);    
+    },900);
     social_state = "closed";
 }
 
@@ -233,6 +264,7 @@ function slider_info_collapse() {
     document.getElementById("slider_info").style["letterSpacing"] = "2px";
     document.getElementById("slider_info").style["fontStyle"] = "normal";
     document.getElementById("slider_info").style["transition"] = "min-height .2s, min-width .15s, letter-spacing .1s, font-style .1s";
+    document.getElementById("slider_info").style["color"] = "rgba(95, 180, 226, 1)";
     info_text.style["visibility"] = "hidden";
     document.getElementById('info_close').style["visibility"] = "hidden";
 }
