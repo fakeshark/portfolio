@@ -130,7 +130,7 @@ function contact_form_expand () {
     document.getElementById("contact_form").style["border-bottom"] = "2px solid rgba(253,128,36,1)";
     document.getElementById("contact_form").style["transition"] = "width .5s, border-bottom .5s, box-shadow .75s";
     setTimeout(function () {
-    document.getElementById("contact_form").style["height"] = "200px";
+    document.getElementById("contact_form").style["height"] = "350px";
     document.getElementById("contact_form").style["borderRadius"] = "6px";
     document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.6)";
     document.getElementById("contact_form").style["border"] = "2px solid rgba(157,67,5,1)";
@@ -138,8 +138,27 @@ function contact_form_expand () {
     document.getElementById("contact_form").style["borderTop"] = "2px solid rgba(111,47,2,1)";
     document.getElementById("contact_form").style["boxShadow"] = "0px 0px 40px rgba(245,140,35,.9), inset 1px 5px 35px rgba(45,20,0,.9)";
     document.getElementById("contact_form").style["transition"] = "height .5s, border .25s, border-top .25s, border-bottom .4s, border-radius .25s";
-    },550);
+    },300);
+    setTimeout(function () { populate_contact_form("visible"); },475);
     contact_state = "opened";
+}
+
+
+function populate_contact_form(state) {
+    timeAmt = 250;
+    if (state === "visible") {
+    setTimeout(function () { document.getElementById("contact_name").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("contact_email").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("message_subject").style["visibility"] = state; },(timeAmt += 105));
+    setTimeout(function () { document.getElementById("message").style["visibility"] = state; },(timeAmt += 100));
+    setTimeout(function () { document.getElementById("contact_send_button").style["visibility"] = state; },(timeAmt += 100));
+    } else {
+    setTimeout(function () { document.getElementById("contact_name").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("contact_email").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("message_subject").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("message").style["visibility"] = state; },(timeAmt -= 50));
+    setTimeout(function () { document.getElementById("contact_send_button").style["visibility"] = state; },(timeAmt -= 50));
+    }
 }
 
 function populate_social_media_buttons(state) {
@@ -163,13 +182,15 @@ function populate_social_media_buttons(state) {
     setTimeout(function () { document.getElementById("filler1").style["visibility"] = state; },(timeAmt -= 50));
     setTimeout(function () { document.getElementById("filler2").style["visibility"] = state; },(timeAmt -= 50));
     }
-
 }
 
 function contact_form_contract () {
+    populate_contact_form("hidden");
+    setTimeout(function () {
     document.getElementById("contact_form").style["width"] = "1px";
     document.getElementById("contact_form").style["height"] = "1px";
     document.getElementById("contact_form").style["transition"] = "height .5s, width .5s";
+    },150);
     setTimeout(function () {
     document.getElementById("contact_form").style["border"] = "2px solid rgba(253,128,36,0)";
     document.getElementById("contact_form").style["backgroundColor"] = "rgba(45,30,10,.0)";
